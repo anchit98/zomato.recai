@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ZOMATO REC.AI | Your Personal Food Scout",
+  title: "Zomato | rec.AI",
   description: "Find the perfect restaurant vibe in Bangalore using advanced LLM ranking and real-time filtering.",
-  keywords: ["Zomato", "Bangalore", "Restaurant Recommendation", "AI", "LLM", "VibeCheck"],
-  authors: [{ name: "Antigravity AI" }],
+  keywords: ["Zomato", "Bangalore", "Restaurant Recommendation", "AI", "LLM", "REC.Ai"],
+  authors: [{ name: "Cursor & Antigravity AI" }],
 };
 
 export const viewport = {
