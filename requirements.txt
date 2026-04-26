@@ -1,4 +1,9 @@
-datasets
-pandas
+fastapi
+uvicorn[standard]
+pydantic
+supabase
+groq
 python-dotenv
+pandas
 requests
+datasets
