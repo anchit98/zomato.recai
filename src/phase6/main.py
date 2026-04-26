@@ -58,7 +58,11 @@ app = FastAPI(
 # Enable CORS for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://zomato-recai-frontend.vercel.app/"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://zomato-recai-frontend.vercel.app",
+        "https://zomato-recai.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
