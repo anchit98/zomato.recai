@@ -1,11 +1,21 @@
 from __future__ import annotations
-
+import os
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 
 from src.phase6.models import RecommendationRequest, RecommendationResponse, HistoryItem, FeedbackRequest
 from src.phase6.service import RecommendationService
+
+# Load env vars
+load_dotenv()
+
+# Validate required environment variables
+REQUIRED_VARS = ["GROQ_API_KEY", "SUPABASE_URL", "SUPABASE_ANON_KEY"]
+missing_vars = [var for var in REQUIRED_VARS if not os.getenv(var)]
+if missing_vars:
+    print(f"CRITICAL ERROR: Missing environment variables: {', '.join(missing_vars)}")
 
 app = FastAPI(
     title="ZOMATO REC.AI",
@@ -72,4 +82,6 @@ async def save_feedback(request: FeedbackRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Get port from environment variable for Render, default to 8000 for local
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
