@@ -23,7 +23,9 @@ try:
     import pandas
     import requests
     import json
+    import supabase
     print(f"[BOOT] pandas {pandas.__version__} OK")
+    print(f"[BOOT] supabase {supabase.__version__} OK")
 except Exception as e:
     print(f"[FATAL] Failed during top-level imports: {e}")
     traceback.print_exc()
