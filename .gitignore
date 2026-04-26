@@ -1,4 +1,26 @@
-.env
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.env
+.env.local
 
+# Node
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# IDEs
+.vscode/
+.idea/
+
+# Misc
+.DS_Store
+*.log
+temp_reqs.txt
+test_out.txt
