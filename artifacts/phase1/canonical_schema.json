@@ -1,0 +1,38 @@
+{
+  "name": "zomato_restaurant_canonical_schema",
+  "version": "1.0.0",
+  "mandatory_fields": [
+    "cuisines",
+    "estimated_cost_for_two",
+    "location",
+    "rating",
+    "restaurant_name"
+  ],
+  "fields": [
+    {
+      "name": "restaurant_name",
+      "type": "string",
+      "description": "Primary restaurant display name"
+    },
+    {
+      "name": "location",
+      "type": "string",
+      "description": "City/locality normalized for filtering"
+    },
+    {
+      "name": "cuisines",
+      "type": "string",
+      "description": "Cuisine labels as normalized text"
+    },
+    {
+      "name": "estimated_cost_for_two",
+      "type": "number",
+      "description": "Approximate cost for two people in normalized numeric form"
+    },
+    {
+      "name": "rating",
+      "type": "number",
+      "description": "Normalized rating on a 0 to 5 scale"
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "total_candidates_before_limit": 37,
+  "candidates_returned": 20,
+  "applied_constraints": {
+    "location": "mars city",
+    "minimum_rating": 4.9,
+    "budget": "low",
+    "cuisine": null,
+    "token_budget": 6000,
+    "top_n_requested": 20,
+    "top_n_applied": 20
+  },
+  "relaxed_constraints": [
+    "minimum_rating",
+    "budget",
+    "cuisine"
+  ],
+  "warnings": [
+    "Additional preferences were sanitized for safety.",
+    "Preferences are highly restrictive; fallback may relax constraints in order: minimum_rating, budget, cuisine.",
+    "No matches found after fallback. Returning top-rated global options."
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "restaurant_name": "Belgian Waffle Factory",
+      "location": "Brigade Road",
+      "cuisines": "Desserts",
+      "estimated_cost_for_two": 400.0,
+      "rating": 4.9,
+      "heuristic_score": 12.3,
+      "match_reasons": [
+        "high rating",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 2,
+      "restaurant_name": "Milano Ice Cream",
+      "location": "Indiranagar",
+      "cuisines": "Ice Cream, Desserts",
+      "estimated_cost_for_two": 400.0,
+      "rating": 4.9,
+      "heuristic_score": 12.3,
+      "match_reasons": [
+        "high rating",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 3,
+      "restaurant_name": "Brahmin's Coffee Bar",
+      "location": "Basavanagudi",
+      "cuisines": "South Indian",
+      "estimated_cost_for_two": 100.0,
+      "rating": 4.8,
+      "heuristic_score": 11.1,
+      "match_reasons": [
+        "high rating",
+        "budget fit"
+      ]
+    },
+    {
+      "rank": 4,
+      "restaurant_name": "CTR",
+      "location": "Malleshwaram",
+      "cuisines": "South Indian",
+      "estimated_cost_for_two": 150.0,
+      "rating": 4.8,
+      "heuristic_score": 11.1,
+      "match_reasons": [
+        "high rating",
+        "budget fit"
+      ]
+    },
+    {
+      "rank": 5,
+      "restaurant_name": "O.G. Variar & Sons",
+      "location": "Rajajinagar",
+      "cuisines": "Bakery, Desserts",
+      "estimated_cost_for_two": 200.0,
+      "rating": 4.8,
+      "heuristic_score": 11.1,
+      "match_reasons": [
+        "high rating",
+        "budget fit"
+      ]
+    },
+    {
+      "rank": 6,
+      "restaurant_name": "Taaza Thindi",
+      "location": "Banashankari",
+      "cuisines": "South Indian",
+      "estimated_cost_for_two": 100.0,
+      "rating": 4.7,
+      "heuristic_score": 10.9,
+      "match_reasons": [
+        "high rating",
+        "budget fit"
+      ]
+    },
+    {
+      "rank": 7,
+      "restaurant_name": "Kurtoskalacs",
+      "location": "Koramangala 5th Block",
+      "cuisines": "Desserts, Fast Food",
+      "estimated_cost_for_two": 350.0,
+      "rating": 4.7,
+      "heuristic_score": 10.9,
+      "match_reasons": [
+        "high rating",
+        "budget fit"
+      ]
+    },
+    {
+      "rank": 8,
+      "restaurant_name": "Corner House Ice Cream",
+      "location": "Indiranagar",
+      "cuisines": "Ice Cream, Desserts",
+      "estimated_cost_for_two": 400.0,
+      "rating": 4.7,
+      "heuristic_score": 10.9,
+      "match_reasons": [
+        "high rating",
+        "budget fit"
+      ]
+    },
+    {
+      "rank": 9,
+      "restaurant_name": "Lot Like Crepes",
+      "location": "Koramangala 7th Block",
+      "cuisines": "Cafe, Desserts, Continental",
+      "estimated_cost_for_two": 550.0,
+      "rating": 4.7,
+      "heuristic_score": 10.9,
+      "match_reasons": [
+        "high rating",
+        "budget fit"
+      ]
+    },
+    {
+      "rank": 10,
+      "restaurant_name": "Sant\u00c3\u0083\u00c2\u0083\u00c3\u0082\u00c2\u0083\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u0083\u00c3\u0083\u00c2\u0083\u00c3\u0082\u00c2\u0082\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u0083\u00c3\u0083\u00c2\u0083\u00c3\u0082\u00c2\u0083\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u0082\u00c3\u0083\u00c2\u0083\u00c3\u0082\u00c2\u0082\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u00a9 Spa Cuisine",
+      "location": "Indiranagar",
+      "cuisines": "Healthy Food, Salad, Mediterranean",
+      "estimated_cost_for_two": 1000.0,
+      "rating": 4.9,
+      "heuristic_score": 10.8,
+      "match_reasons": [
+        "high rating",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 11,
+      "restaurant_name": "Flechazo",
+      "location": "Whitefield",
+      "cuisines": "Asian, Mediterranean, North Indian, BBQ",
+      "estimated_cost_for_two": 1400.0,
+      "rating": 4.9,
+      "heuristic_score": 10.8,
+      "match_reasons": [
+        "high rating",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 12,
+      "restaurant_name": "Asia Kitchen By Mainland China",
+      "location": "Koramangala 5th Block",
+      "cuisines": "Asian, Chinese, Thai, Momos",
+      "estimated_cost_for_two": 1500.0,
+      "rating": 4.9,
+      "heuristic_score": 10.8,
+      "match_reasons": [
+        "high rating",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 13,
+      "restaurant_name": "Byg Brewski Brewing Company",
+      "location": "Sarjapur Road",
+      "cuisines": "Continental, North Indian, Italian, South Indian, Finger Food",
+      "estimated_cost_for_two": 1600.0,
+      "rating": 4.9,
+      "heuristic_score": 10.8,
+      "match_reasons": [
+        "high rating",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 14,
+      "restaurant_name": "AB's - Absolute Barbecues",
+      "location": "BTM",
+      "cuisines": "European, Mediterranean, North Indian, BBQ",
+      "estimated_cost_for_two": 1600.0,
+      "rating": 4.9,
+      "heuristic_score": 10.8,
+      "match_reasons": [
+        "high rating",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 15,
+      "restaurant_name": "Punjab Grill",
+      "location": "Whitefield",
+      "cuisines": "North Indian",
+      "estimated_cost_for_two": 2000.0,
+      "rating": 4.9,
+      "heuristic_score": 10.8,
+      "match_reasons": [
+        "high rating",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 16,
+      "restaurant_name": "House Of Commons",
+      "location": "Koramangala 5th Block",
+      "cuisines": "Continental, Asian, North Indian",
+      "estimated_cost_for_two": 1000.0,
+      "rating": 4.8,
+      "heuristic_score": 9.6,
+      "match_reasons": [
+        "high rating"
+      ]
+    },
+    {
+      "rank": 17,
+      "restaurant_name": "The Pizza Bakery",
+      "location": "Indiranagar",
+      "cuisines": "Italian, Pizza, Beverages",
+      "estimated_cost_for_two": 1200.0,
+      "rating": 4.8,
+      "heuristic_score": 9.6,
+      "match_reasons": [
+        "high rating"
+      ]
+    },
+    {
+      "rank": 18,
+      "restaurant_name": "The Globe Grub",
+      "location": "Marathahalli",
+      "cuisines": "Continental, North Indian, Asian, Italian",
+      "estimated_cost_for_two": 1300.0,
+      "rating": 4.8,
+      "heuristic_score": 9.6,
+      "match_reasons": [
+        "high rating"
+      ]
+    },
+    {
+      "rank": 19,
+      "restaurant_name": "Barbecue by Punjab Grill",
+      "location": "Malleshwaram",
+      "cuisines": "BBQ",
+      "estimated_cost_for_two": 1300.0,
+      "rating": 4.8,
+      "heuristic_score": 9.6,
+      "match_reasons": [
+        "high rating"
+      ]
+    },
+    {
+      "rank": 20,
+      "restaurant_name": "Chili's American Grill & Bar",
+      "location": "Malleshwaram",
+      "cuisines": "American, Tex-Mex, Burger, BBQ, Mexican",
+      "estimated_cost_for_two": 1400.0,
+      "rating": 4.8,
+      "heuristic_score": 9.6,
+      "match_reasons": [
+        "high rating"
+      ]
+    }
+  ]
+}

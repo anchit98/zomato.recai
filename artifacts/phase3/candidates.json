@@ -1,0 +1,321 @@
+{
+  "total_candidates_before_limit": 44,
+  "candidates_returned": 20,
+  "applied_constraints": {
+    "location": "bangalore",
+    "minimum_rating": 4.2,
+    "budget": "low",
+    "cuisine": "chinese",
+    "token_budget": 6000,
+    "top_n_requested": 20,
+    "top_n_applied": 20
+  },
+  "relaxed_constraints": [
+    "location"
+  ],
+  "warnings": [
+    "Location appears city-level while dataset is locality-level. Location filter relaxed."
+  ],
+  "candidates": [
+    {
+      "rank": 1,
+      "restaurant_name": "Rolls & Bowls",
+      "location": "Brookefield",
+      "cuisines": "Rolls, Chinese",
+      "estimated_cost_for_two": 250.0,
+      "rating": 4.5,
+      "heuristic_score": 14.0,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 2,
+      "restaurant_name": "HOMMS",
+      "location": "Marathahalli",
+      "cuisines": "Chinese, Beverages, Momos, Thai",
+      "estimated_cost_for_two": 300.0,
+      "rating": 4.5,
+      "heuristic_score": 14.0,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 3,
+      "restaurant_name": "BITEBOX",
+      "location": "Marathahalli",
+      "cuisines": "North Indian, Chinese, Mughlai, Desserts",
+      "estimated_cost_for_two": 300.0,
+      "rating": 4.5,
+      "heuristic_score": 14.0,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 4,
+      "restaurant_name": "Meghana Foods",
+      "location": "Jayanagar",
+      "cuisines": "Biryani, North Indian, Chinese",
+      "estimated_cost_for_two": 600.0,
+      "rating": 4.5,
+      "heuristic_score": 14.0,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 5,
+      "restaurant_name": "The Biryani Story",
+      "location": "BTM",
+      "cuisines": "Biryani, North Indian, Chinese, Mughlai",
+      "estimated_cost_for_two": 600.0,
+      "rating": 4.4,
+      "heuristic_score": 13.8,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 6,
+      "restaurant_name": "Zamindar",
+      "location": "Kalyan Nagar",
+      "cuisines": "Biryani, Chinese, Mughlai, Andhra",
+      "estimated_cost_for_two": 600.0,
+      "rating": 4.4,
+      "heuristic_score": 13.8,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 7,
+      "restaurant_name": "Ayodhya Upachar",
+      "location": "Banashankari",
+      "cuisines": "South Indian, North Indian, Chinese, Street Food",
+      "estimated_cost_for_two": 200.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 8,
+      "restaurant_name": "Momo Jojo",
+      "location": "JP Nagar",
+      "cuisines": "Chinese, Tibetan, Momos",
+      "estimated_cost_for_two": 300.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 9,
+      "restaurant_name": "Khatta Meetha Teekha",
+      "location": "Koramangala 6th Block",
+      "cuisines": "Street Food, North Indian, Mithai, Chinese, Beverages",
+      "estimated_cost_for_two": 300.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 10,
+      "restaurant_name": "Khawa Karpo",
+      "location": "Koramangala 5th Block",
+      "cuisines": "Chinese, Tibetan, Momos",
+      "estimated_cost_for_two": 350.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 11,
+      "restaurant_name": "Hyderabad Biryaani House",
+      "location": "Richmond Road",
+      "cuisines": "Biryani, North Indian, Chinese",
+      "estimated_cost_for_two": 550.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 12,
+      "restaurant_name": "Green Onion",
+      "location": "Residency Road",
+      "cuisines": "Chinese",
+      "estimated_cost_for_two": 550.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 13,
+      "restaurant_name": "Wok Paper Scissors",
+      "location": "Koramangala 5th Block",
+      "cuisines": "Asian, Malaysian, Chinese, Thai, Momos",
+      "estimated_cost_for_two": 550.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 14,
+      "restaurant_name": "Tibetan Kitchen",
+      "location": "Koramangala 5th Block",
+      "cuisines": "Tibetan, Chinese, Continental, Momos",
+      "estimated_cost_for_two": 600.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 15,
+      "restaurant_name": "Zamindars Biryani Durbar",
+      "location": "Nagawara",
+      "cuisines": "Biryani, Chinese, Mughlai, Andhra",
+      "estimated_cost_for_two": 600.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 16,
+      "restaurant_name": "Sagar Hotel",
+      "location": "Rajajinagar",
+      "cuisines": "North Indian, Chinese, Street Food, Juices",
+      "estimated_cost_for_two": 600.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 17,
+      "restaurant_name": "Udupi Ruchi Grand",
+      "location": "Banashankari",
+      "cuisines": "South Indian, North Indian, Chinese, Street Food",
+      "estimated_cost_for_two": 200.0,
+      "rating": 4.2,
+      "heuristic_score": 13.4,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 18,
+      "restaurant_name": "A2B - Adyar Ananda Bhavan",
+      "location": "JP Nagar",
+      "cuisines": "South Indian, North Indian, Chinese, Street Food",
+      "estimated_cost_for_two": 200.0,
+      "rating": 4.2,
+      "heuristic_score": 13.4,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 19,
+      "restaurant_name": "New Krishna Bhavan",
+      "location": "Malleshwaram",
+      "cuisines": "South Indian, North Indian, Chinese",
+      "estimated_cost_for_two": 200.0,
+      "rating": 4.2,
+      "heuristic_score": 13.4,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 20,
+      "restaurant_name": "Polamma's Mess",
+      "location": "BTM",
+      "cuisines": "North Indian, Chinese, Biryani",
+      "estimated_cost_for_two": 300.0,
+      "rating": 4.2,
+      "heuristic_score": 13.4,
+      "match_reasons": [
+        "high rating",
+        "cuisine match",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    }
+  ]
+}

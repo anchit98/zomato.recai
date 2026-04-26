@@ -1,0 +1,4 @@
+datasets
+pandas
+python-dotenv
+requests

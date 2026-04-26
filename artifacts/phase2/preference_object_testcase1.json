@@ -1,0 +1,29 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "normalized_preferences": {
+    "location": "bangalore",
+    "budget": "low",
+    "cuisine": "chinese",
+    "minimum_rating": 4.2,
+    "additional_preferences": "family friendly, quick service"
+  },
+  "constraint_policy": {
+    "hard_constraints": [
+      "location",
+      "minimum_rating",
+      "budget"
+    ],
+    "soft_constraints": [
+      "cuisine",
+      "additional_preferences"
+    ],
+    "is_conflicting": false,
+    "relaxation_order": [
+      "minimum_rating",
+      "budget",
+      "cuisine"
+    ]
+  }
+}

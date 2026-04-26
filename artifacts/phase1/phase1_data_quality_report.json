@@ -1,0 +1,50 @@
+{
+  "dataset_id": "ManikaSaini/zomato-restaurant-recommendation",
+  "row_counts": {
+    "raw_rows": 51717,
+    "post_mapping_rows": 51717,
+    "cleaned_rows": 9704
+  },
+  "schema_mapping": {
+    "restaurant_name": "name",
+    "location": "location",
+    "cuisines": "cuisines",
+    "estimated_cost_for_two": "approx_cost(for two people)",
+    "rating": "rate"
+  },
+  "unknown_source_columns": [
+    "address",
+    "book_table",
+    "dish_liked",
+    "listed_in(city)",
+    "listed_in(type)",
+    "menu_item",
+    "online_order",
+    "phone",
+    "rest_type",
+    "reviews_list",
+    "url",
+    "votes"
+  ],
+  "quality_metrics": {
+    "raw_column_count": 17,
+    "mandatory_missing_counts_before_drop": {
+      "cuisines": 45,
+      "location": 21,
+      "rating": 10052,
+      "restaurant_name": 0,
+      "estimated_cost_for_two": 346
+    },
+    "mandatory_missing_percentage_before_drop": {
+      "cuisines": 0.09,
+      "location": 0.04,
+      "rating": 19.44,
+      "restaurant_name": 0.0,
+      "estimated_cost_for_two": 0.67
+    },
+    "dropped_rows_due_to_missing_mandatory_fields": 10307,
+    "deduplicated_rows": 31706,
+    "quality_gate_failed": false,
+    "quality_gate_policy": "Fail if any mandatory field missing percentage exceeds 35%"
+  }
+}

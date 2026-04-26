@@ -1,0 +1,26 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "normalized_preferences": {
+    "location": "bellandur",
+    "budget": "high",
+    "cuisine": null,
+    "minimum_rating": 4.0,
+    "additional_preferences": null
+  },
+  "constraint_policy": {
+    "hard_constraints": [
+      "location",
+      "minimum_rating",
+      "budget"
+    ],
+    "soft_constraints": [],
+    "is_conflicting": false,
+    "relaxation_order": [
+      "minimum_rating",
+      "budget",
+      "cuisine"
+    ]
+  }
+}

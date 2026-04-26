@@ -1,0 +1,84 @@
+{
+  "status": "ok",
+  "model": "llama-3.3-70b-versatile",
+  "used_llm": true,
+  "warnings": [],
+  "input_constraints": {
+    "location": "bellandur",
+    "budget": "high",
+    "cuisine": null,
+    "minimum_rating": 4.0,
+    "additional_preferences": null,
+    "top_k_requested": 5,
+    "top_k_applied": 5
+  },
+  "recommendations": [
+    {
+      "candidate_id": "C1",
+      "restaurant_name": "Chili's American Grill & Bar",
+      "location": "Bellandur",
+      "cuisines": "American, Tex-Mex, Burger, BBQ",
+      "estimated_cost_for_two": 1800.0,
+      "rating": 4.6,
+      "heuristic_score": 11.7,
+      "explanation": "Highest rating in Bellandur.",
+      "reasoning_source": "llm",
+      "rank": 1
+    },
+    {
+      "candidate_id": "C2",
+      "restaurant_name": "Nook - Aloft Bengaluru Cessna Business Park",
+      "location": "Bellandur",
+      "cuisines": "North Indian, Continental, Asian",
+      "estimated_cost_for_two": 1800.0,
+      "rating": 4.3,
+      "heuristic_score": 11.1,
+      "explanation": "High rating and budget fit.",
+      "reasoning_source": "llm",
+      "rank": 2
+    },
+    {
+      "candidate_id": "C3",
+      "restaurant_name": "Bombay Brasserie",
+      "location": "Bellandur",
+      "cuisines": "Modern Indian",
+      "estimated_cost_for_two": 1800.0,
+      "rating": 4.3,
+      "heuristic_score": 11.1,
+      "explanation": "Meets minimum rating and budget.",
+      "reasoning_source": "llm",
+      "rank": 3
+    },
+    {
+      "candidate_id": "C4",
+      "restaurant_name": "The Irish House",
+      "location": "Bellandur",
+      "cuisines": "European, American",
+      "estimated_cost_for_two": 1700.0,
+      "rating": 4.2,
+      "heuristic_score": 10.9,
+      "explanation": "Slightly lower cost in Bellandur.",
+      "reasoning_source": "llm",
+      "rank": 4
+    },
+    {
+      "candidate_id": "C5",
+      "restaurant_name": "MoMo Cafe - Courtyard by Marriott",
+      "location": "Bellandur",
+      "cuisines": "Asian, North Indian, South Indian, Momos",
+      "estimated_cost_for_two": 2000.0,
+      "rating": 4.2,
+      "heuristic_score": 10.9,
+      "explanation": "High-end option in Bellandur.",
+      "reasoning_source": "llm",
+      "rank": 5
+    }
+  ],
+  "meta": {
+    "llm_provider": "groq",
+    "llm_error": null,
+    "candidate_pool_size": 6,
+    "phase3_warnings": [],
+    "phase3_relaxed_constraints": []
+  }
+}

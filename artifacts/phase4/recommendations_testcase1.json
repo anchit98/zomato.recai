@@ -1,0 +1,90 @@
+{
+  "status": "ok",
+  "model": "llama-3.3-70b-versatile",
+  "used_llm": true,
+  "warnings": [
+    "Location appears city-level while dataset is locality-level. Location filter relaxed."
+  ],
+  "input_constraints": {
+    "location": "bangalore",
+    "budget": "low",
+    "cuisine": "chinese",
+    "minimum_rating": 4.2,
+    "additional_preferences": "family friendly, quick service",
+    "top_k_requested": 5,
+    "top_k_applied": 5
+  },
+  "recommendations": [
+    {
+      "candidate_id": "C1",
+      "restaurant_name": "Rolls & Bowls",
+      "location": "Brookefield",
+      "cuisines": "Rolls, Chinese",
+      "estimated_cost_for_two": 250.0,
+      "rating": 4.5,
+      "heuristic_score": 14.0,
+      "explanation": "Low budget Chinese option.",
+      "reasoning_source": "llm",
+      "rank": 1
+    },
+    {
+      "candidate_id": "C2",
+      "restaurant_name": "HOMMS",
+      "location": "Marathahalli",
+      "cuisines": "Chinese, Beverages, Momos, Thai",
+      "estimated_cost_for_two": 300.0,
+      "rating": 4.5,
+      "heuristic_score": 14.0,
+      "explanation": "High rating Chinese restaurant.",
+      "reasoning_source": "llm",
+      "rank": 2
+    },
+    {
+      "candidate_id": "C3",
+      "restaurant_name": "BITEBOX",
+      "location": "Marathahalli",
+      "cuisines": "North Indian, Chinese, Mughlai, Desserts",
+      "estimated_cost_for_two": 300.0,
+      "rating": 4.5,
+      "heuristic_score": 14.0,
+      "explanation": "Meets minimum rating and budget.",
+      "reasoning_source": "llm",
+      "rank": 3
+    },
+    {
+      "candidate_id": "C7",
+      "restaurant_name": "Ayodhya Upachar",
+      "location": "Banashankari",
+      "cuisines": "South Indian, North Indian, Chinese, Street Food",
+      "estimated_cost_for_two": 200.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "explanation": "Affordable Chinese food option.",
+      "reasoning_source": "llm",
+      "rank": 4
+    },
+    {
+      "candidate_id": "C8",
+      "restaurant_name": "Momo Jojo",
+      "location": "JP Nagar",
+      "cuisines": "Chinese, Tibetan, Momos",
+      "estimated_cost_for_two": 300.0,
+      "rating": 4.3,
+      "heuristic_score": 13.6,
+      "explanation": "Chinese cuisine at moderate price.",
+      "reasoning_source": "llm",
+      "rank": 5
+    }
+  ],
+  "meta": {
+    "llm_provider": "groq",
+    "llm_error": null,
+    "candidate_pool_size": 10,
+    "phase3_warnings": [
+      "Location appears city-level while dataset is locality-level. Location filter relaxed."
+    ],
+    "phase3_relaxed_constraints": [
+      "location"
+    ]
+  }
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search &amp; Discovery - REC.AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "primary": "#b7122a",
+                        "surface-bright": "#f9f9f9",
+                        "on-surface-variant": "#5b403f",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "background": "#f9f9f9",
+                        "on-primary-fixed": "#410007",
+                        "surface-tint": "#bb162c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface": "#f9f9f9",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-container-low": "#f3f3f4",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary-container": "#757474",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#fffcfb",
+                        "primary-container": "#db313f",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#474746",
+                        "tertiary": "#5c5c5c",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#92001c",
+                        "inverse-surface": "#2f3131",
+                        "inverse-primary": "#ffb3b1",
+                        "primary-fixed": "#ffdad8",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "outline-variant": "#e4bebc",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "on-secondary-container": "#636262",
+                        "surface-variant": "#e2e2e2",
+                        "tertiary-fixed": "#e4e2e1",
+                        "surface-dim": "#dadada",
+                        "outline": "#8f6f6e",
+                        "secondary-container": "#e2dfde",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-background": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary": "#5f5e5e",
+                        "secondary-fixed": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xl": "48px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "20px",
+                        "unit": "4px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["lexend"],
+                        "body-md": ["lexend"],
+                        "h3": ["lexend"],
+                        "price": ["lexend"],
+                        "h1": ["lexend"],
+                        "h2": ["lexend"],
+                        "body-sm": ["lexend"],
+                        "label-bold": ["lexend"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "price": ["20px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                        "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "label-bold": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen flex flex-col antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-800 z-50">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-2xl mx-auto">
+<div class="text-2xl font-black text-red-600 tracking-tighter">REC.AI</div>
+<div class="flex items-center gap-4">
+<button aria-label="history" class="text-zinc-400 dark:text-zinc-500 hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl">history</span>
+</button>
+<button aria-label="account_circle" class="text-zinc-400 dark:text-zinc-500 hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px] pb-[100px] md:pb-xl flex items-center justify-center">
+<div class="w-full max-w-2xl px-6 py-xl mx-auto">
+<div class="text-center mb-xl">
+<h1 class="font-h1 text-h1 text-on-surface mb-sm">Find your next meal with AI</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Tell us what you're craving, and we'll find the perfect spot.</p>
+</div>
+<form class="space-y-lg border border-surface-container-high rounded-lg p-lg bg-surface-container-lowest shadow-sm">
+<!-- Location -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface uppercase mb-sm" for="location">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-surface-container-high rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-on-surface focus:ring-2 focus:ring-on-surface/10 transition-all placeholder:text-secondary-fixed-dim" id="location" placeholder="e.g., Indiranagar, Bangalore" type="text"/>
+</div>
+</div>
+<!-- Budget & Rating Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Budget -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface uppercase mb-sm" for="budget">Budget (INR)</label>
+<select class="w-full px-4 py-3 bg-surface-container-lowest border border-surface-container-high rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-on-surface focus:ring-2 focus:ring-on-surface/10 transition-all appearance-none" id="budget">
+<option value="">Any Budget</option>
+<option value="under_500">Under ₹500</option>
+<option value="500_1000">₹500 - ₹1000</option>
+<option value="1000_2000">₹1000 - ₹2000</option>
+<option value="above_2000">Above ₹2000</option>
+</select>
+</div>
+<!-- Minimum Rating -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface uppercase mb-sm">Minimum Rating</label>
+<div class="flex items-center gap-2 h-[48px]">
+<button aria-label="1 Star" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container border border-surface-container-high hover:border-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-xl" data-weight="fill">star</span>
+</button>
+<button aria-label="2 Stars" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container border border-surface-container-high hover:border-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-xl" data-weight="fill">star</span>
+</button>
+<button aria-label="3 Stars" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container border border-surface-container-high hover:border-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-xl" data-weight="fill">star</span>
+</button>
+<button aria-label="4 Stars" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container border border-primary text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-primary text-xl" data-weight="fill">star</span>
+</button>
+<button aria-label="5 Stars" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container border border-surface-container-high hover:border-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-xl" data-weight="fill">star</span>
+</button>
+<span class="font-label-bold text-label-bold text-on-surface ml-2">4.0+</span>
+</div>
+</div>
+</div>
+<!-- Cuisines -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface uppercase mb-sm">Cuisines &amp; Tags</label>
+<div class="flex flex-wrap gap-sm">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full font-body-sm text-body-sm transition-colors border border-primary" type="button">North Indian</button>
+<button class="px-4 py-2 bg-surface-container-low text-on-surface rounded-full font-body-sm text-body-sm hover:bg-surface-container-high transition-colors border border-transparent" type="button">Italian</button>
+<button class="px-4 py-2 bg-surface-container-low text-on-surface rounded-full font-body-sm text-body-sm hover:bg-surface-container-high transition-colors border border-transparent" type="button">Cafe</button>
+<button class="px-4 py-2 bg-surface-container-low text-on-surface rounded-full font-body-sm text-body-sm hover:bg-surface-container-high transition-colors border border-transparent" type="button">Asian</button>
+<button class="px-4 py-2 bg-surface-container-low text-on-surface rounded-full font-body-sm text-body-sm hover:bg-surface-container-high transition-colors border border-transparent" type="button">Desserts</button>
+<button class="px-4 py-2 bg-surface-container-lowest border border-surface-container-high text-on-surface-variant rounded-full font-body-sm text-body-sm hover:border-on-surface transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span> More
+                        </button>
+</div>
+</div>
+<!-- Additional Preferences -->
+<div>
+<label class="block font-label-bold text-label-bold text-on-surface uppercase mb-sm" for="preferences">Additional Preferences</label>
+<textarea class="w-full px-4 py-3 bg-surface-container-lowest border border-surface-container-high rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-on-surface focus:ring-2 focus:ring-on-surface/10 transition-all placeholder:text-secondary-fixed-dim resize-none" id="preferences" placeholder="e.g., Quiet for a meeting, Pet friendly, Vegan options..." rows="3"></textarea>
+</div>
+<!-- Action Button -->
+<div class="pt-sm">
+<button class="w-full bg-primary text-on-primary font-h3 text-h3 py-4 rounded-lg hover:opacity-90 active:scale-[0.98] transition-all shadow-sm flex justify-center items-center gap-2" type="submit">
+                        Get Recommendations <span class="material-symbols-outlined text-on-primary" data-weight="fill">auto_awesome</span>
+</button>
+</div>
+</form>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-white dark:bg-zinc-950 pb-safe border-t border-zinc-100 dark:border-zinc-800">
+<button class="flex flex-col items-center justify-center text-red-600 dark:text-red-500 py-2 border-t-2 border-red-600 w-1/3 hover:text-red-500 transition-colors active:bg-zinc-50 dark:active:bg-zinc-900 transition-all">
+<span class="material-symbols-outlined text-2xl mb-1">search</span>
+<span class="font-['Lexend'] text-[10px] font-bold uppercase tracking-widest">Discover</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 py-2 w-1/3 hover:text-red-500 transition-colors active:bg-zinc-50 dark:active:bg-zinc-900 transition-all border-t-2 border-transparent">
+<span class="material-symbols-outlined text-2xl mb-1">bookmark</span>
+<span class="font-['Lexend'] text-[10px] font-bold uppercase tracking-widest">Saved</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 py-2 w-1/3 hover:text-red-500 transition-colors active:bg-zinc-50 dark:active:bg-zinc-900 transition-all border-t-2 border-transparent">
+<span class="material-symbols-outlined text-2xl mb-1">settings</span>
+<span class="font-['Lexend'] text-[10px] font-bold uppercase tracking-widest">Settings</span>
+</button>
+</nav>
+</body></html>

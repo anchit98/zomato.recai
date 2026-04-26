@@ -1,0 +1,101 @@
+{
+  "total_candidates_before_limit": 6,
+  "candidates_returned": 6,
+  "applied_constraints": {
+    "location": "bellandur",
+    "minimum_rating": 4.0,
+    "budget": "high",
+    "cuisine": null,
+    "token_budget": 6000,
+    "top_n_requested": 20,
+    "top_n_applied": 20
+  },
+  "relaxed_constraints": [],
+  "warnings": [],
+  "candidates": [
+    {
+      "rank": 1,
+      "restaurant_name": "Chili's American Grill & Bar",
+      "location": "Bellandur",
+      "cuisines": "American, Tex-Mex, Burger, BBQ",
+      "estimated_cost_for_two": 1800.0,
+      "rating": 4.6,
+      "heuristic_score": 11.7,
+      "match_reasons": [
+        "high rating",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 2,
+      "restaurant_name": "Nook - Aloft Bengaluru Cessna Business Park",
+      "location": "Bellandur",
+      "cuisines": "North Indian, Continental, Asian",
+      "estimated_cost_for_two": 1800.0,
+      "rating": 4.3,
+      "heuristic_score": 11.1,
+      "match_reasons": [
+        "high rating",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 3,
+      "restaurant_name": "Bombay Brasserie",
+      "location": "Bellandur",
+      "cuisines": "Modern Indian",
+      "estimated_cost_for_two": 1800.0,
+      "rating": 4.3,
+      "heuristic_score": 11.1,
+      "match_reasons": [
+        "high rating",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 4,
+      "restaurant_name": "The Irish House",
+      "location": "Bellandur",
+      "cuisines": "European, American",
+      "estimated_cost_for_two": 1700.0,
+      "rating": 4.2,
+      "heuristic_score": 10.9,
+      "match_reasons": [
+        "high rating",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 5,
+      "restaurant_name": "MoMo Cafe - Courtyard by Marriott",
+      "location": "Bellandur",
+      "cuisines": "Asian, North Indian, South Indian, Momos",
+      "estimated_cost_for_two": 2000.0,
+      "rating": 4.2,
+      "heuristic_score": 10.9,
+      "match_reasons": [
+        "high rating",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    },
+    {
+      "rank": 6,
+      "restaurant_name": "BG's Poolside Bar & Grill",
+      "location": "Bellandur",
+      "cuisines": "Mediterranean, Italian, Mexican",
+      "estimated_cost_for_two": 1600.0,
+      "rating": 4.1,
+      "heuristic_score": 10.7,
+      "match_reasons": [
+        "high rating",
+        "budget fit",
+        "meets minimum rating"
+      ]
+    }
+  ]
+}

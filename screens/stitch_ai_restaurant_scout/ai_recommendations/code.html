@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Recommendations | REC.AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "primary": "#b7122a",
+                      "surface-bright": "#f9f9f9",
+                      "on-surface-variant": "#5b403f",
+                      "on-primary": "#ffffff",
+                      "on-primary-container": "#fffbff",
+                      "background": "#f9f9f9",
+                      "on-primary-fixed": "#410007",
+                      "surface-tint": "#bb162c",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface": "#f9f9f9",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "surface-container-low": "#f3f3f4",
+                      "surface-container-highest": "#e2e2e2",
+                      "tertiary-container": "#757474",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#fffcfb",
+                      "primary-container": "#db313f",
+                      "on-error": "#ffffff",
+                      "surface-container": "#eeeeee",
+                      "error": "#ba1a1a",
+                      "on-surface": "#1a1c1c",
+                      "on-secondary-fixed-variant": "#474746",
+                      "tertiary": "#5c5c5c",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#92001c",
+                      "inverse-surface": "#2f3131",
+                      "inverse-primary": "#ffb3b1",
+                      "primary-fixed": "#ffdad8",
+                      "tertiary-fixed-dim": "#c8c6c6",
+                      "outline-variant": "#e4bebc",
+                      "primary-fixed-dim": "#ffb3b1",
+                      "on-secondary-container": "#636262",
+                      "surface-variant": "#e2e2e2",
+                      "tertiary-fixed": "#e4e2e1",
+                      "surface-dim": "#dadada",
+                      "outline": "#8f6f6e",
+                      "secondary-container": "#e2dfde",
+                      "inverse-on-surface": "#f0f1f1",
+                      "on-secondary-fixed": "#1b1b1b",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "on-background": "#1a1c1c",
+                      "surface-container-high": "#e8e8e8",
+                      "secondary": "#5f5e5e",
+                      "secondary-fixed": "#e5e2e1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "xl": "48px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "gutter": "20px",
+                      "unit": "4px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "lexend"
+                      ],
+                      "body-md": [
+                              "lexend"
+                      ],
+                      "h3": [
+                              "lexend"
+                      ],
+                      "price": [
+                              "lexend"
+                      ],
+                      "h1": [
+                              "lexend"
+                      ],
+                      "h2": [
+                              "lexend"
+                      ],
+                      "body-sm": [
+                              "lexend"
+                      ],
+                      "label-bold": [
+                              "lexend"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h3": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "price": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h1": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h2": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-bold": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f9f9f9; /* background */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Hide bottom nav on desktop, hide top full nav on mobile based on instructions */
+        @media (min-width: 768px) {
+            .mobile-bottom-nav { display: none !important; }
+        }
+        @media (max-width: 767px) {
+            .desktop-top-nav-actions { display: none !important; }
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-zinc-950 font-['Lexend'] antialiased docked full-width top-0 border-b border-zinc-100 dark:border-zinc-800 shadow-none sticky z-50">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-2xl mx-auto">
+<div class="text-2xl font-black text-red-600 tracking-tighter">
+                REC.AI
+            </div>
+<div class="hidden md:flex gap-4 desktop-top-nav-actions">
+<button aria-label="history" class="text-zinc-400 dark:text-zinc-500 hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button aria-label="account_circle" class="text-zinc-400 dark:text-zinc-500 hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-2xl mx-auto px-6 py-xl">
+<header class="mb-xl">
+<h1 class="font-h1 text-h1 text-on-surface mb-sm">Top AI Recommendations for you</h1>
+<p class="font-body-lg text-body-lg text-secondary">Based on your recent cravings and preference for high-protein, low-carb options in downtown.</p>
+</header>
+<div class="flex flex-col gap-lg">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest border border-surface-container-high rounded-lg p-md hover:shadow-[0px_4px_12px_rgba(28,28,28,0.08)] transition-shadow duration-200 cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-xs">The Iron Grill</h3>
+<div class="flex items-center gap-xs text-secondary font-body-sm text-body-sm">
+<span class="bg-surface-container-low px-2 py-1 rounded-full text-on-surface">Steakhouse</span>
+<span>•</span>
+<span>Downtown</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-xs text-primary font-label-bold text-label-bold bg-error-container px-2 py-1 rounded-sm">
+<span class="material-symbols-outlined text-[14px] icon-fill">star</span>
+                            4.8
+                        </div>
+<div class="font-price text-price text-on-surface mt-sm">
+                            $120
+                        </div>
+<div class="font-body-sm text-body-sm text-secondary">for two</div>
+</div>
+</div>
+<div class="mt-md pt-md border-t border-surface-container-low">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary mt-1">auto_awesome</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Why this was chosen:</strong> Their "Tomahawk Special" perfectly aligns with your high-protein preference. The AI noted you highly rated similar wood-fired steakhouses last month, and they have availability tonight.
+                        </p>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest border border-surface-container-high rounded-lg p-md hover:shadow-[0px_4px_12px_rgba(28,28,28,0.08)] transition-shadow duration-200 cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-xs">Keto Kitchen &amp; Bar</h3>
+<div class="flex items-center gap-xs text-secondary font-body-sm text-body-sm">
+<span class="bg-surface-container-low px-2 py-1 rounded-full text-on-surface">Healthy</span>
+<span class="bg-surface-container-low px-2 py-1 rounded-full text-on-surface">Keto</span>
+<span>•</span>
+<span>Midtown</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-xs text-on-surface font-label-bold text-label-bold bg-surface-container-high px-2 py-1 rounded-sm">
+<span class="material-symbols-outlined text-[14px] icon-fill">star</span>
+                            4.5
+                        </div>
+<div class="font-price text-price text-on-surface mt-sm">
+                            $65
+                        </div>
+<div class="font-body-sm text-body-sm text-secondary">for two</div>
+</div>
+</div>
+<div class="mt-md pt-md border-t border-surface-container-low">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary mt-1">auto_awesome</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Why this was chosen:</strong> Matches your strict low-carb requirement with a 100% keto-friendly menu. Reviews frequently mention their quick service, satisfying your need for an efficient dining experience.
+                        </p>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest border border-surface-container-high rounded-lg p-md hover:shadow-[0px_4px_12px_rgba(28,28,28,0.08)] transition-shadow duration-200 cursor-pointer">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-xs">Catch Seafood</h3>
+<div class="flex items-center gap-xs text-secondary font-body-sm text-body-sm">
+<span class="bg-surface-container-low px-2 py-1 rounded-full text-on-surface">Seafood</span>
+<span>•</span>
+<span>Waterfront</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-xs text-on-surface font-label-bold text-label-bold bg-surface-container-high px-2 py-1 rounded-sm">
+<span class="material-symbols-outlined text-[14px] icon-fill">star</span>
+                            4.6
+                        </div>
+<div class="font-price text-price text-on-surface mt-sm">
+                            $90
+                        </div>
+<div class="font-body-sm text-body-sm text-secondary">for two</div>
+</div>
+</div>
+<div class="mt-md pt-md border-t border-surface-container-low">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary mt-1">auto_awesome</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Why this was chosen:</strong> You recently saved two seafood recipes. This place offers exceptional lean protein options, particularly their grilled wild salmon, fitting perfectly into your current nutritional goals.
+                        </p>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-white dark:bg-zinc-950 pb-safe fixed bottom-0 w-full border-t border-zinc-100 dark:border-zinc-800 shadow-none font-['Lexend'] text-[10px] font-bold uppercase tracking-widest mobile-bottom-nav">
+<button aria-label="Discover" class="flex flex-col items-center justify-center text-red-600 dark:text-red-500 py-2 border-t-2 border-red-600 active:bg-zinc-50 dark:active:bg-zinc-900 transition-all flex-1">
+<span class="material-symbols-outlined mb-1">search</span>
+<span>Discover</span>
+</button>
+<button aria-label="Saved" class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 py-2 hover:text-red-500 transition-colors active:bg-zinc-50 dark:active:bg-zinc-900 transition-all flex-1">
+<span class="material-symbols-outlined mb-1">bookmark</span>
+<span>Saved</span>
+</button>
+<button aria-label="Settings" class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 py-2 hover:text-red-500 transition-colors active:bg-zinc-50 dark:active:bg-zinc-900 transition-all flex-1">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span>Settings</span>
+</button>
+</nav>
+</body></html>
