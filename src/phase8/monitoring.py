@@ -8,12 +8,19 @@ import json
 
 # Configure local logging as a secondary fallback
 LOG_DIR = Path("logs")
-LOG_DIR.mkdir(exist_ok=True)
-logging.basicConfig(
-    filename=LOG_DIR / "telemetry.log",
-    level=logging.INFO,
-    format='%(asctime)s | %(levelname)s | %(message)s'
-)
+try:
+    LOG_DIR.mkdir(exist_ok=True)
+    logging.basicConfig(
+        filename=LOG_DIR / "telemetry.log",
+        level=logging.INFO,
+        format='%(asctime)s | %(levelname)s | %(message)s'
+    )
+except Exception:
+    # On production (Render), file logging may not be available
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s | %(levelname)s | %(message)s'
+    )
 
 class TelemetryService:
     @staticmethod
