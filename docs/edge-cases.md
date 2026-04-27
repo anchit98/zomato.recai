@@ -461,6 +461,100 @@ For each edge case, define:
   - Implement a "Keep-Alive" cron job (e.g., using GitHub Actions or a free uptime monitor) to ping the `/api/v1/health` endpoint.
   - Update frontend loading states to distinguish between "Thinking" and "Connecting to Server".
 
+## Phase 11: Concurrency Handling & Performance Optimization Edge Cases
+
+### EC-45: Temp file collision under concurrent requests
+
+- **Severity**: High
+- **Scenario**: Two users submit recommendations simultaneously with the same `session_id`. Both requests write to `pref_{session_id}.json` and `cand_{session_id}.json`, causing one request to read the other's data.
+- **Expected behavior**: Each request operates on fully isolated temporary files, regardless of session overlap.
+- **Handling strategy**:
+  - Replace `session_id`-based filenames with `uuid4()`-based filenames (e.g., `pref_a1b2c3d4.json`).
+  - Use Python's `tempfile.NamedTemporaryFile` or `tempfile.TemporaryDirectory` for automatic cleanup.
+  - Delete temp files in a `finally` block to prevent orphans.
+
+### EC-46: LLM rate-limit cascade (429 storm)
+
+- **Severity**: High
+- **Scenario**: 10+ users submit recommendations simultaneously. All 10 fire parallel Groq API calls. Groq returns 429 (Too Many Requests) for most of them, triggering exponential backoff retries that amplify the load.
+- **Expected behavior**: The system caps concurrent LLM calls and queues excess requests, preventing a retry storm.
+- **Handling strategy**:
+  - Introduce an `asyncio.Semaphore(3)` (or `threading.Semaphore`) to cap concurrent Groq calls.
+  - Queue excess requests with a configurable timeout (e.g., 15s).
+  - If the queue is full or timeout is exceeded, immediately return deterministic fallback results.
+  - Log throttled requests for operational visibility.
+
+### EC-47: DataFrame reload storm on `/locations`
+
+- **Severity**: Medium
+- **Scenario**: 50 users hit the `/locations` endpoint simultaneously. Each call triggers `pd.read_csv()`, loading a ~5MB CSV into memory 50 times in parallel.
+- **Expected behavior**: The CSV is loaded once and served from an in-memory cache.
+- **Handling strategy**:
+  - Load the DataFrame once during `RecommendationService.__init__()` and cache it as an instance variable.
+  - Expose a `/admin/cache-refresh` endpoint for manual cache invalidation.
+  - Add a TTL-based auto-refresh (e.g., every 24 hours) for long-running deployments.
+
+### EC-48: Race condition in shared service state
+
+- **Severity**: Medium
+- **Scenario**: The single `RecommendationService` instance is shared across all FastAPI worker threads. If any method modifies instance-level state (e.g., a counter or cache dict) without locking, concurrent reads/writes produce incorrect results.
+- **Expected behavior**: All shared mutable state is protected by thread-safe primitives.
+- **Handling strategy**:
+  - Use `threading.Lock()` for any mutable instance attributes.
+  - Prefer immutable/request-scoped data over shared mutable state.
+  - Audit all service methods for side effects on `self.*`.
+
+### EC-49: Memory exhaustion under sustained load
+
+- **Severity**: High
+- **Scenario**: Each recommendation request loads the full DataFrame, creates JSON artifacts, and holds LLM response data in memory. Under 20+ concurrent requests, the Render instance (512MB RAM on free tier) runs out of memory and is OOM-killed.
+- **Expected behavior**: Memory usage is bounded and predictable regardless of concurrency level.
+- **Handling strategy**:
+  - Cache the DataFrame once (single copy in memory).
+  - Stream or discard intermediate JSON artifacts instead of accumulating them.
+  - Set `WEB_CONCURRENCY=1` and rely on the LLM semaphore to bound parallel work.
+  - Monitor memory via Render metrics and alert on threshold breaches.
+
+### EC-50: Session isolation failure in history writes
+
+- **Severity**: High
+- **Scenario**: User A's recommendations are accidentally saved under User B's `session_id` due to a variable reference bug or async timing issue.
+- **Expected behavior**: Each history write is strictly scoped to the originating request's session ID.
+- **Handling strategy**:
+  - Pass `session_id` as a function parameter (not stored on `self`).
+  - Validate `session_id` format (UUID) before writing.
+  - Add integration tests that simulate interleaved writes and verify isolation.
+
+### EC-51: Background task failure (silent history loss)
+
+- **Severity**: Medium
+- **Scenario**: History persistence is moved to a `BackgroundTask`. The Supabase write fails (network error, auth expired), but since it's running in the background, the error is never surfaced to the user or logged.
+- **Expected behavior**: Background task failures are logged with full context and optionally retried.
+- **Handling strategy**:
+  - Wrap background tasks in try/except with structured logging.
+  - Implement a dead-letter queue or retry buffer for failed writes.
+  - Expose a `/admin/failed-writes` endpoint for operational debugging.
+
+### EC-52: Stale cache serving outdated data
+
+- **Severity**: Low
+- **Scenario**: The restaurant dataset is updated (new restaurants added, ratings changed), but the in-memory cache still holds the old version.
+- **Expected behavior**: Cache is refreshable without server restart.
+- **Handling strategy**:
+  - Implement a cache TTL (e.g., 24 hours).
+  - Add a protected `/admin/cache-refresh` endpoint.
+  - Log cache age in telemetry so staleness is observable.
+
+### EC-53: Thundering herd on cold start
+
+- **Severity**: Medium
+- **Scenario**: After a Render cold start, multiple users hit the service simultaneously. All requests trigger full initialization (DataFrame load, Supabase client creation, LLM warm-up) at the same time.
+- **Expected behavior**: Initialization happens once; subsequent requests wait for it to complete rather than duplicating work.
+- **Handling strategy**:
+  - Use a `threading.Event` or `asyncio.Event` as an initialization gate.
+  - First request triggers init; all others block until the gate is set.
+  - Return a 503 "Service Warming Up" response if init takes too long.
+
 ---
 
 ## Fallback Plan: Multi-Level Resilience
@@ -491,6 +585,13 @@ In the event of failure at any layer of the ZOMATO REC.AI pipeline, the followin
 - **Strategy**: 
   - **Static Maintenance Page**: DNS failover or a simple static page hosted on a secondary provider (e.g., GitHub Pages) to provide status updates and an ETA for restoration.
 
+### Level 5: Concurrency Overload Fallback (Capacity Failure)
+- **Trigger**: LLM semaphore queue is full, memory usage exceeds threshold, or request rate exceeds the per-IP limit.
+- **Strategy**:
+  - **Immediate Deterministic Response**: Bypass the LLM entirely and return heuristic-ranked results with a note: *"Our AI Scout is experiencing high demand. Here are top-rated matches based on your filters."*
+  - **Rate Limit Response**: Return 429 with a `Retry-After` header and a user-friendly message: *"You're searching too fast! Please wait a few seconds."*
+  - **Circuit Breaker**: If error rate exceeds 50% over a 60-second window, automatically switch all requests to deterministic mode for a cool-down period.
+
 ---
 
 ## Recommended Test Matrix
@@ -504,6 +605,8 @@ Use these categories to convert edge cases into tests:
 - **Quality tests**: ranking relevance checks on benchmark scenarios.
 - **Mobile responsiveness**: testing viewports from 320px to 4k.
 - **Deployment smoke tests**: CORS verification, SSL check, and cold-start measurement.
+- **Concurrency tests**: Simulated parallel requests verifying file isolation, cache correctness, and LLM semaphore behavior.
+- **Load tests**: Sustained traffic simulation (e.g., 20 concurrent users for 5 minutes) measuring p50/p95/p99 latency and error rates.
 
 ## Priority Implementation Order
 
@@ -511,6 +614,9 @@ Implement safeguards in this order for maximum risk reduction:
 
 1. EC-01, EC-02, EC-14, EC-19, EC-22, EC-23, EC-31, EC-36
 2. EC-42, EC-43 (Deployment stability)
-3. EC-39, EC-41 (Mobile stability)
-4. EC-03, EC-12, EC-15, EC-20, EC-29, EC-30
-5. Remaining medium and low severity cases
+3. EC-45, EC-46, EC-49, EC-50 (Concurrency — High severity)
+4. EC-39, EC-41 (Mobile stability)
+5. EC-03, EC-12, EC-15, EC-20, EC-29, EC-30
+6. EC-47, EC-48, EC-51, EC-53 (Concurrency — Medium severity)
+7. Remaining medium and low severity cases
+

@@ -4,7 +4,7 @@ This document defines a phased architecture for implementing the restaurant reco
 
 ## High-Level Architecture
 
-The system is implemented as a pipeline with seven layers:
+The system is implemented as a pipeline with nine layers:
 
 1. **Data Layer** - ingestion, cleaning, normalization, storage.
 2. **Preference Layer** - captures and validates user preferences.
@@ -14,6 +14,7 @@ The system is implemented as a pipeline with seven layers:
 6. **API Layer** - exposes recommendation logic and history via REST endpoints.
 7. **Frontend Layer** - modern web interface for interaction and history browsing.
 8. **Observability Layer** - logging, monitoring, and quality evaluation.
+9. **Concurrency & Optimization Layer** - request isolation, caching, rate limiting, and graceful degradation under load.
 
 ---
 
@@ -345,6 +346,59 @@ Deploy ZOMATO REC.AI to a public production environment with robust CI/CD.
 
 ---
 
+## Phase 11: Concurrency Handling & Performance Optimization
+
+### Goal
+
+Ensure the system remains stable, correct, and performant when serving multiple simultaneous users without data corruption, resource exhaustion, or degraded response quality.
+
+### Current Gaps (Pre-Phase 11)
+
+| Component | Issue | Risk |
+|---|---|---|
+| **Temp File I/O** (`service.py`) | Uses `session_id` as filename; concurrent requests with the same session can overwrite each other's preference/candidate JSON files. | **High** — Data corruption, wrong recommendations served. |
+| **DataFrame Loading** (`get_unique_locations`) | Calls `pd.read_csv()` on every `/locations` request with no caching. | **Medium** — Unnecessary disk I/O and memory churn under load. |
+| **LLM API Calls** (`ranking.py`) | No concurrency limiter; N simultaneous users = N parallel Groq API calls, risking 429 rate limits. | **High** — Cascade failure when Groq throttles. |
+| **Shared Service Instance** | Single `RecommendationService` object handles all requests; no thread-safe guards on mutable state. | **Medium** — Potential race conditions in stateful operations. |
+| **Supabase Writes** (`history.py`) | Synchronous blocking writes inside the request path; slow DB = slow response. | **Medium** — Latency amplification under load. |
+
+### Components
+
+- **Request Isolation Layer**: Unique temp directories per request (UUID-based, not session-based).
+- **In-Memory Data Cache**: Singleton cached DataFrame for the cleaned dataset with TTL-based refresh.
+- **LLM Concurrency Limiter**: `asyncio.Semaphore` or thread-pool bounded executor to cap parallel Groq calls.
+- **Background Task Queue**: Non-blocking history persistence via FastAPI `BackgroundTasks`.
+- **Rate Limiter Middleware**: Per-IP or per-session request throttling.
+
+### Key Activities
+
+- **Request Isolation**: Replace `session_id`-based temp filenames with `uuid4()` to prevent file collisions between concurrent requests.
+- **DataFrame Caching**: Load `zomato_cleaned.csv` once at service initialization and cache in memory. Expose a cache-refresh endpoint for operational use.
+- **LLM Semaphore**: Introduce a bounded semaphore (e.g., max 3 concurrent LLM calls) to prevent Groq rate-limit cascades. Queue excess requests with a configurable timeout.
+- **Async History Writes**: Move `save_recommendation_flow()` to a FastAPI `BackgroundTask` so the user response isn't blocked by Supabase write latency.
+- **Rate Limiting**: Add a lightweight middleware (e.g., `slowapi`) to enforce per-IP request limits (e.g., 10 requests/minute).
+- **Graceful Degradation**: If the LLM semaphore queue is full, return deterministic fallback results immediately instead of timing out.
+- **Temp File Cleanup**: Add a periodic cleanup task or use Python's `tempfile.TemporaryDirectory` to auto-clean on process exit.
+
+### Deliverables
+
+- Thread-safe `RecommendationService` with request-scoped temp files.
+- Cached data loader with configurable TTL.
+- LLM concurrency limiter with queue overflow fallback.
+- Background history persistence.
+- Rate limiting middleware.
+- Load test report (simulated concurrent users).
+
+### Exit Criteria
+
+- 10 concurrent recommendation requests complete without data corruption or file collision.
+- `/locations` endpoint responds in < 50ms (cached) vs current ~200ms+ (uncached).
+- LLM rate-limit errors (429) are reduced to zero under normal load via queuing.
+- History writes do not add latency to the user-facing response.
+- System degrades gracefully (deterministic fallback) when concurrency limits are exceeded.
+
+---
+
 - **Milestone 1:** Phases 1-2 complete (Data prep & Input logic).
 - **Milestone 2:** Phases 3-4 complete (Core LLM Recommendation Engine stable).
 - **Milestone 3:** Phase 5 complete (Supabase project linked and schema deployed).
@@ -353,6 +407,7 @@ Deploy ZOMATO REC.AI to a public production environment with robust CI/CD.
 - **Milestone 6:** Phase 8 complete (Production-ready with monitoring & tests).
 - **Milestone 7:** Phase 9 complete (Mobile-ready and touch-optimized).
 - **Milestone 8:** Phase 10 complete (Publicly deployed to Vercel & Render).
+- **Milestone 9:** Phase 11 complete (Concurrent-user safe with performance optimization).
 
 ## Dependencies Between Phases
 
@@ -365,3 +420,4 @@ Deploy ZOMATO REC.AI to a public production environment with robust CI/CD.
 - Phase 8 monitors all layers.
 - Phase 9 builds upon the stable Phase 7 UI.
 - Phase 10 deploys the complete stack.
+- Phase 11 hardens the deployed stack for real-world concurrent traffic.
