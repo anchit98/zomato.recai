@@ -13,8 +13,11 @@ print("[STARTUP] Starting ZOMATO REC.AI backend...")
 
 try:
     import uvicorn
-    from fastapi import FastAPI, HTTPException
+    from fastapi import FastAPI, HTTPException, BackgroundTasks, Request
     from fastapi.middleware.cors import CORSMiddleware
+    from slowapi import Limiter, _rate_limit_exceeded_handler
+    from slowapi.util import get_remote_address
+    from slowapi.errors import RateLimitExceeded
     from dotenv import load_dotenv
     print("[STARTUP] Core imports OK")
 except Exception as e:
@@ -49,11 +52,14 @@ except Exception as e:
     traceback.print_exc()
     sys.exit(1)
 
+limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(
     title="ZOMATO REC.AI",
     description="AI-powered restaurant scout for Zomato data",
     version="1.0.0"
 )
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # Enable CORS for frontend integration
 app.add_middleware(
@@ -88,7 +94,8 @@ async def get_locations():
     return {"locations": locations}
 
 @app.post("/api/v1/recommend", response_model=RecommendationResponse)
-async def recommend(request: RecommendationRequest):
+@limiter.limit("10/minute")
+async def recommend(request: RecommendationRequest, req: Request, background_tasks: BackgroundTasks):
     payload = request.dict(exclude={"session_id", "top_k"})
     result = service.get_recommendations(
         payload=payload, 
@@ -98,6 +105,10 @@ async def recommend(request: RecommendationRequest):
     
     if result["status"] == "error":
         raise HTTPException(status_code=400, detail=result)
+
+    # Phase 11: Save to history in background (EC-51)
+    if hasattr(service, 'last_flow_data'):
+        background_tasks.add_task(service.save_history_background, service.last_flow_data)
         
     return result
 
